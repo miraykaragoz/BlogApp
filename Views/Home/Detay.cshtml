@@ -1,13 +1,21 @@
-﻿@model Post
+﻿@model PostModel
 
-<h1>@ViewData["title"]</h1>
+@{
+    ViewData["title"] = Model.Post.Title;
+}
 
+<link rel="stylesheet" href="~/css/yorumlar.css" />
 <article class="flex flex-col shadow my-4">
-    <a href="#" class="hover:opacity-75">
-        <img src="@Model.ImgUrl">
-    </a>
-    <div class="bg-white flex flex-col justify-start p-6">
-        <h1 class="text-2xl font-bold pb-3">@ViewData["title"]</h1>
-        @Html.Raw(Model.Content)
-    </div>
+    @if (Model != null)
+    {
+        <div class="bg-white flex flex-col justify-start p-6">
+            <h1 class="text-2xl font-bold pb-3">@Model.Post.Title</h1>
+            @Html.Raw(Model.Post.Detail)
+        </div>
+        @Html.Partial("Partials/_Comment", Model)
+    }
+    else
+    {
+        <p>Üzgünüm böyle bir gönderi yok.</p>
+    }
 </article>

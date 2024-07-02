@@ -1,0 +1,20 @@
+﻿@model PostModel
+
+<link rel="stylesheet" href="~/css/yorumlar.css" />
+<h2 class="comment-section-title">Yorumlar</h2>
+<ul class="comment-list">
+    @foreach (var comment in Model.Comments)
+    {
+        <li class="comment-item">
+            <strong>@comment.Name</strong> (@comment.CreatedDate.ToString("dd.MM.yyyy HH:mm")) diyor ki:
+            <p>@comment.Comment</p>
+        </li>
+    }
+</ul>
+<h2 class="comment-section-title">Yorum ekle</h2>
+<form asp-controller="Home" asp-action="YorumEkle" method="post" autocomplete="off" class="comment-form">
+    <p><input type="text" placeholder="Ad Soyad" name="Name" class="form-input"></input></p>
+    <p><textarea name="Comment" placeholder="Yorum" class="form-textarea"></textarea></p>
+    <input type="hidden" name="PostId" value="@Model.Post.Id"></input>
+    <p><button class="form-button">Gönder</button></p>
+</form>

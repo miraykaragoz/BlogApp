@@ -1,0 +1,51 @@
+﻿@model List<PostComment>
+
+@{
+    Layout = "_AdminLayout";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Yorumlar</h1>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Yorum Yapan</th>
+                        <th>Yorum</th>
+                        <th>Yorum Tarihi</th>
+                        <th>Post Id</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var yorumlar in Model)
+                    {
+                        <tr>
+                            <td>@yorumlar.Name</td>
+                            <td>@yorumlar.Comment</td>
+                            <td>@yorumlar.CreatedDate</td>
+                            <td>@yorumlar.PostId</td>
+                            <td>
+                                <div class="button-container">
+                                    <form action="/admin/yorumonayla/@yorumlar.Id" method="post">
+                                        <input type="submit" value="Onayla" class="btn btn-success">
+                                    </form>
+                                    <form action="/admin/yorumsil/@yorumlar.Id" method="post">
+                                        <input type="submit" value="Sil" class="btn btn-danger" onclick="return confirm('Silmek istediğinize emin misiniz?')">
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<style>
+    .button-container {
+        display: flex;
+        gap: 5px; 
+    }
+</style>
