@@ -10,7 +10,7 @@ namespace BlogApp.Controllers
     {
         public IActionResult Index()
         {
-            var connectionString = "Server=104.247.162.242\\MSSQLSERVER2019;Initial Catalog=miraykar_blog;User Id=miraykar_blogdbuser;Password=;TrustServerCertificate=True";
+            var connectionString = "";
 
             using var connection = new SqlConnection(connectionString);
             var posts = connection.Query<Post>("SELECT id, title, created_date as CreatedDate, updated_date as UpdatedDate FROM posts").ToList();
@@ -20,7 +20,7 @@ namespace BlogApp.Controllers
 
         public IActionResult Duzenle(int id)
         {
-            var connectionString = "Server=104.247.162.242\\MSSQLSERVER2019;Initial Catalog=miraykar_blog;User Id=miraykar_blogdbuser;Password=;TrustServerCertificate=True";
+            var connectionString = "";
 
             using var connection = new SqlConnection(connectionString);
 
@@ -32,7 +32,7 @@ namespace BlogApp.Controllers
         [HttpPost]
         public IActionResult Duzenle(Post model)
         {
-            var connectionString = "Server=104.247.162.242\\MSSQLSERVER2019;Initial Catalog=miraykar_blog;User Id=miraykar_blogdbuser;Password=;TrustServerCertificate=True";
+            var connectionString = "";
 
             using var connection = new SqlConnection(connectionString);
 
@@ -54,7 +54,7 @@ namespace BlogApp.Controllers
 
         public IActionResult sil(int id)
         {
-            var connectionString = "Server=104.247.162.242\\MSSQLSERVER2019;Initial Catalog=miraykar_blog;User Id=miraykar_blogdbuser;Password=;TrustServerCertificate=True";
+            var connectionString = "";
 
             using var connection = new SqlConnection(connectionString);
 
@@ -83,7 +83,7 @@ namespace BlogApp.Controllers
             model.CreatedDate = DateTime.Now;
             model.UpdatedDate = DateTime.Now;
 
-            var connectionString = "Server=104.247.162.242\\MSSQLSERVER2019;Initial Catalog=miraykar_blog;User Id=miraykar_blogdbuser;Password=;TrustServerCertificate=True";
+            var connectionString = "";
 
             using var connection = new SqlConnection(connectionString);
 
@@ -107,7 +107,7 @@ namespace BlogApp.Controllers
 
         public IActionResult Yorumlar()
         {
-            var connectionString = "Server=104.247.162.242\\MSSQLSERVER2019;Initial Catalog=miraykar_blog;User Id=miraykar_blogdbuser;Password=;TrustServerCertificate=True";
+            var connectionString = "";
 
             using var connection = new SqlConnection(connectionString);
 
@@ -120,7 +120,7 @@ namespace BlogApp.Controllers
         [HttpPost]
         public IActionResult YorumOnayla(PostComment model)
         {
-            var connectionString = "Server=104.247.162.242\\MSSQLSERVER2019;Initial Catalog=miraykar_blog;User Id=miraykar_blogdbuser;Password=;TrustServerCertificate=True";
+            var connectionString = "";
 
             using var connection = new SqlConnection(connectionString);
 
@@ -138,11 +138,9 @@ namespace BlogApp.Controllers
         [HttpPost]
         public IActionResult YorumSil(int id)
         {
-            var connectionString = "Server=104.247.162.242\\MSSQLSERVER2019;Initial Catalog=miraykar_blog;User Id=miraykar_blogdbuser;Password=;TrustServerCertificate=True";
+            var connectionString = "";
 
             using var connection = new SqlConnection(connectionString);
-            
-            //tek parametre gönderildiği için @id yerine  sql = "" + id yazdım
 
             var sql = "DELETE FROM comments WHERE Id = " + id;
 
