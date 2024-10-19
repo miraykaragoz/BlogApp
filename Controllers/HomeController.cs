@@ -11,7 +11,7 @@ namespace BlogApp.Controllers
     {
         public IActionResult Index()
         {
-            var connectionString = "Server=104.247.162.242\\MSSQLSERVER2019;Initial Catalog=miraykar_blog;User Id=miraykar_blogdbuser;Password=;TrustServerCertificate=True";
+            var connectionString = "";
 
             using var connection = new SqlConnection(connectionString);
             var sql = "SELECT * FROM posts ORDER BY updated_date DESC";
@@ -39,7 +39,7 @@ namespace BlogApp.Controllers
 
             var postModel = new PostModel();
 
-            var connectionString = "Server=104.247.162.242\\MSSQLSERVER2019;Initial Catalog=miraykar_blog;User Id=miraykar_blogdbuser;Password=;TrustServerCertificate=True";
+            var connectionString = "";
 
             using (var connection = new SqlConnection(connectionString))
             {
@@ -68,7 +68,7 @@ namespace BlogApp.Controllers
 
             model.CreatedDate = DateTime.Now;
 
-            var connectionString = "Server=104.247.162.242\\MSSQLSERVER2019;Initial Catalog=miraykar_blog;User Id=miraykar_blogdbuser;Password=;TrustServerCertificate=True";
+            var connectionString = "";
 
             using var connection = new SqlConnection(connectionString);
 
@@ -79,7 +79,7 @@ namespace BlogApp.Controllers
                 var affectedRows = connection.Execute(sql, model);
 
                 //ViewBag.MessageCssClass = "alert-success";
-                //ViewBag.Message = "Yorum gönderilddi, onay için bekliyor.";
+                //ViewBag.Message = "Yorum gÃ¶nderilddi, onay iÃ§in bekliyor.";
                 //return View("Message", new { id = model.PostId });
 
                 return RedirectToAction("Detay", new { id = model.PostId });
